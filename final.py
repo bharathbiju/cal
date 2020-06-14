@@ -6,7 +6,7 @@ from tkinter import messagebox
 
 # setting up the tkinter window
 root = tkinter.Tk()
-root.geometry("400x550")
+root.geometry("400x590")
 root.resizable(0, 0)
 root.title("Calculator")
 
@@ -23,35 +23,42 @@ operator = ""
 
 # function for numerical button clicked
 
+
 def btn_1_isclicked():
     global val
     val = val + "1"
     data.set(val)
+
 
 def btn_2_isclicked():
     global val
     val = val + "2"
     data.set(val)
 
+
 def btn_3_isclicked():
     global val
     val = val + "3"
     data.set(val)
+
 
 def btn_4_isclicked():
     global val
     val = val + "4"
     data.set(val)
 
+
 def btn_5_isclicked():
     global val
     val = val + "5"
     data.set(val)
 
+
 def btn_6_isclicked():
     global val
     val = val + "6"
     data.set(val)
+
 
 def btn_7_isclicked():
     global val
@@ -77,11 +84,17 @@ def btn_0_isclicked():
     data.set(val)
 
 
+def btn_dot_isclicked():
+    global val
+    val = val + "."
+    data.set(val)
+
+
 # functions for the operator button click
 def btn_plus_clicked():
     global A
     global operator, val
-    A = int(val)
+    A = float(val)
     operator = "+"
     val = val + "+"
     data.set(val)
@@ -90,7 +103,7 @@ def btn_plus_clicked():
 def btn_minus_clicked():
     global A
     global operator, val
-    A = int(val)
+    A = float(val)
     operator = "-"
     val = val + "-"
     data.set(val)
@@ -99,7 +112,7 @@ def btn_minus_clicked():
 def btn_mult_clicked():
     global A
     global operator, val
-    A = int(val)
+    A = float(val)
     operator = "*"
     val = val + "*"
     data.set(val)
@@ -108,7 +121,7 @@ def btn_mult_clicked():
 def btn_div_clicked():
     global A
     global operator, val
-    A = int(val)
+    A = float(val)
     operator = "/"
     val = val + "/"
     data.set(val)
@@ -129,29 +142,29 @@ def result():
     global A, operator, val, val2
     val2 = val
     if operator == "+":
-        x = int((val2.split("+")[1]))
+        x = float((val2.split("+")[1]))
         C = A + x
         val = str(C)
         datar.set(val)
     if operator == "-":
-        x = int((val2.split("-")[1]))
+        x = float((val2.split("-")[1]))
         C = A - x
         val = str(C)
         datar.set(val)
     if operator == "*":
-        x = int((val2.split("*")[1]))
+        x = float((val2.split("*")[1]))
         C = A * x
         val = str(C)
         datar.set(val)
     if operator == "/":
-        x = int((val2.split("/")[1]))
+        x = float((val2.split("/")[1]))
         if x == 0:
             messagebox.showerror("Error", "Division By 0 Not Supported")
             A = ""
             val = ""
             datar.set(val)
         else:
-            C = int(A / x)
+            C = float(A / x)
             datar.set(C)
 
 
@@ -166,25 +179,28 @@ def btnsave_clicked():
 def btnup_clicked():
     global ip
     if ip < 0 or ip >= count:
-
         ip = 0
         data.set(li[ip])
     else:
-
         data.set(li[ip])
         ip = ip+1
 
 
 def btndown_clicked():
     global ip
-
     if ip < 0 or ip >= count:
-
         ip = 0
         data.set(li[ip])
     else:
         data.set(li[ip])
         ip = ip+1
+
+def btn_bs_isclicked():
+    global val
+    val =(val[:-1])
+    data.set(val)
+    
+    
 
 
 # the label that shows the result
@@ -407,11 +423,11 @@ btnsqrroot = Button(
 )
 btnsqrroot.pack(side=LEFT, expand=True, fill="both",)
 
-global f
-f=X**2
+# global f
+# f = X**2
 btnsqr = Button(
     btnrow2,
-    text=f,
+    text="x2",
     activebackground='grey',
     font=("Verdana", 22),
     highlightthickness=6,
@@ -459,7 +475,7 @@ btnc = Button(
     relief=FLAT,
     height=1,
     width=1,
-    # command=btn_8_isclicked,
+    command=btn_c_pressed,
 )
 btnc.pack(side=LEFT, expand=True, fill="both",)
 
@@ -472,7 +488,7 @@ btnbs = Button(
     relief=FLAT,
     height=1,
     width=1,
-    # command=btn_9_isclicked,
+    command=btn_bs_isclicked,
 )
 btnbs.pack(side=LEFT, expand=True, fill="both",)
 
@@ -808,7 +824,7 @@ btndot = Button(
     height=1,
     width=1,
     activebackground='grey',
-    # command=btn_1_isclicked,
+    command=btn_dot_isclicked,
 )
 btndot.pack(side=LEFT, expand=True, fill="both",)
 
