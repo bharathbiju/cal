@@ -135,7 +135,15 @@ def btn_c_pressed():
     operator = ""
     data.set(val)
     datar.set(val)
-
+    
+def btn_ce_isclicked():
+    global A, operator, val, ip	
+    val = ""	
+    A = 0	
+    ip = 0	
+    operator = ""	
+    data.set(val)	
+    datar.set(val)
 
 # function to find the result
 def result():
@@ -200,6 +208,15 @@ def btn_bs_isclicked():
     val =(val[:-1])
     data.set(val)
     
+def btn_x2_isclicked():	
+    global val	
+    val =str(pow(float(val), 2)) 	
+    datar.set(val)	
+    
+def btn_sqrroot_isclicked():	
+    global val	
+    val =str(math.sqrt(float(val)))	
+    datar.set(val)    
     
 
 
@@ -419,7 +436,7 @@ btnsqrroot = Button(
     relief=FLAT,
     height=1,
     width=1,
-    # command=btn_8_isclicked,
+    command=btn_sqrroot_isclicked,,
 )
 btnsqrroot.pack(side=LEFT, expand=True, fill="both",)
 
@@ -434,7 +451,7 @@ btnsqr = Button(
     relief=FLAT,
     height=1,
     width=1,
-    # command=btn_9_isclicked,
+    command=btn_x2_isclicked,
 )
 btnsqr.pack(side=LEFT, expand=True, fill="both",)
 
@@ -447,7 +464,7 @@ btn1byx = Button(
     highlightthickness=6,
     height=1,
     width=1,
-    # command=btn_div_clicked,
+    command=btn_ce_isclicked,
 )
 btn1byx.pack(side=LEFT, expand=True, fill="both",)
 
